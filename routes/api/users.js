@@ -118,7 +118,6 @@ router.post("/login", (req, res) => {
 // Route  --> GET api/users/current
 // Desc   --> Return current user
 // Access --> Private
-
 router.get(
   "/current",
   passport.authenticate("jwt", {
