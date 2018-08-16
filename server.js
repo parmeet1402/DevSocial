@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require('passport');
+
 // Routes are included in this file
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
@@ -21,8 +23,11 @@ mongoose
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => conosle.log(err));
 
-// Basic Routing
-app.get("/", (req, res) => res.send("hellosssss"));
+// Passport Middleware
+app.use(passport.initialize()); 
+
+// Passport config
+require('./config/passport.js')(passport);
 
 // routes are set up
 app.use("/api/users", users);

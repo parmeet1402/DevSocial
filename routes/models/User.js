@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
 // Create User Schema
 // i.e. what fields will be present in User collection
@@ -11,5 +11,5 @@ const UserSchema = new Schema({
   date: { type: Date, default: Date.now, required: true }
 });
 
-// expose the schema to server.js
+// expose the schema
 module.exports = User = mongoose.model("users", UserSchema);
