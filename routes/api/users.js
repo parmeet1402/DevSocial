@@ -18,7 +18,7 @@ const router = express.Router();
 // Access --> Public
 router.get("/test", (req, res) => res.json({ message: "Users works" }));
 
-// Route  --> GET api/users/register
+// Route  --> POST api/users/register
 // Desc   --> Register a user
 // Access --> Public
 router.post("/register", (req, res) => {
