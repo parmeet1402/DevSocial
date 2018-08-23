@@ -14,10 +14,12 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  onChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+  //prevent logged in user to enter login page
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
   }
-
   // maps errors to state... which are first brought and mapped to props
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
@@ -28,6 +30,10 @@ class Login extends Component {
         errors: nextProps.errors
       });
     }
+  }
+
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   onSubmit(event) {
