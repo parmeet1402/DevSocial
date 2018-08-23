@@ -100,7 +100,7 @@ class Register extends Component {
                     )}
                     <small className="form-text text-muted">
                       This site uses Gravatar so if you want a profile image,
-                      use a Gravatar email
+                      use a Gravatar email address
                     </small>
                   </div>
                   <div className="form-group">
