@@ -42,21 +42,21 @@ export const loginUser = userData => dispatch => {
     );
 };
 
+//logout user
+export const logoutUser = () => dispatch => {
+  //remove token from local storage
+  localStorage.removeItem("jwtToken");
+  //remove auth header for future requests
+  setAuthToken(false);
+  //set current usrt to {} which will set isAuthenticated to false
+  dispatch(setCurrentUser({}));
+};
+
 //set logged in user
+//set current user
 export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded
   };
 };
-
-
-//logout user
-export const logoutUser  = () => dispatch =>{
-  //remove token from local storage
-  localStorage.removeItem('jwtToken');
-  //remove auth header for future requests
-  setAuthToken(false);
-  //set current usrt to {} which will set isAuthenticated to false
-  dispatch(setCurrentUser({}));
-}
