@@ -2,18 +2,19 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile,deleteAccount } from "../../actions/profileActions";
+import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
+import Experience from "./Experience";
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
   }
 
-onDeleteClick(event){
-  this.props.deleteAccount();
-}
+  onDeleteClick(event) {
+    this.props.deleteAccount();
+  }
 
   render() {
     const { user } = this.props.auth;
@@ -32,8 +33,14 @@ onDeleteClick(event){
             </p>
             <ProfileActions />
             {/* Experiece  and education */}
+            <Experience experience={profile.experience} />
             <div style={{ marginBottom: "60px" }} />
-            <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger">Delete My Account</button>
+            <button
+              onClick={this.onDeleteClick.bind(this)}
+              className="btn btn-danger"
+            >
+              Delete My Account
+            </button>
           </div>
         );
       } else {
@@ -78,5 +85,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile,deleteAccount }
+  { getCurrentProfile, deleteAccount }
 )(Dashboard);

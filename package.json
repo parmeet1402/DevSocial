@@ -23,6 +23,7 @@
     "mongoose": "^5.2.8",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react-moment": "^0.7.9",
     "validator": "^10.5.0"
   }
 }

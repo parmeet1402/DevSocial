@@ -46,7 +46,7 @@ class EditProfile extends Component {
       const profile = nextProps.profile.profile;
 
       //Bring skills array back to comma seprated value
-      const skillsCSV = profile.skills.join(",");
+      /* const skillsCSV = profile.skills.join(","); */
 
       //if profile field doesnt exists, make empty string
       profile.company = !isEmpty(profile.company) ? profile.company : "";
