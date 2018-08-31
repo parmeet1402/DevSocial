@@ -46,11 +46,11 @@ class EditProfile extends Component {
       const profile = nextProps.profile.profile;
 
       //Bring skills array back to comma seprated value
-      /* const skillsCSV = profile.skills.join(","); */
+      const skillsCSV = profile.skills.join(",");
 
       //if profile field doesnt exists, make empty string
       profile.company = !isEmpty(profile.company) ? profile.company : "";
-      profile.wesbite = !isEmpty(profile.website) ? profile.website : "";
+      profile.website = !isEmpty(profile.website) ? profile.website : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
       profile.githubusername = !isEmpty(profile.githubusername)
         ? profile.githubusername
@@ -80,7 +80,7 @@ class EditProfile extends Component {
         website: profile.website,
         location: profile.location,
         status: profile.status,
-        skills: profile.skills,
+        skills: skillsCSV,
         githubusername: profile.githubusername,
         bio: profile.bio,
         twitter: profile.twitter,
