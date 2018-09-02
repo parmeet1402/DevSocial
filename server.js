@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const passport = require('passport');
+const passport = require("passport");
+const path = require("path");
 
 // Routes are included in this file
 const users = require("./routes/api/users");
@@ -24,15 +25,25 @@ mongoose
   .catch(err => conosle.log(err));
 
 // Passport Middleware
-app.use(passport.initialize()); 
+app.use(passport.initialize());
 
 // Passport config
-require('./config/passport.js')(passport);
+require("./config/passport.js")(passport);
 
 // routes are set up
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+
+//server static assets if in production
+if (process.env.NODE_ENV === "production") {
+  //set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendfile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // Port number
 const port = process.env.PORT || 5000;
